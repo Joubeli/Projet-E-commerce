@@ -6,7 +6,7 @@ const bcrypt= require('bcrypt')
 
 //Register User 
 
-router.post("/", async (req,res) =>{
+router.post("/register", async (req,res) =>{
     const user= {...req.body}
     const email = user.email
     const email_exist= await User.findOne({email})
@@ -24,13 +24,6 @@ router.post("/", async (req,res) =>{
      {
         res.status(401).json({msg: 'Failed to add user'})  
      }
-
-    
-
-
-
-
-
 
 })
 

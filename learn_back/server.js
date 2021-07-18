@@ -3,7 +3,7 @@ const Connect= require('./config/connect')
 
 const app= express()
 app.use(express.json())
-app.use("/users", require("./routes/user_login"))
+app.use("/user", require("./routes/user_login"))
 require("dotenv").config({ path: "./config/.env" });
 
 

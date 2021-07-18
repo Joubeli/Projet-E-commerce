@@ -7,18 +7,25 @@ import {registerUser} from '../../JS/action/actionUser'
 
 const SIGN_UP = () => {
 
-    const[newUser, setnewUser] = useState({
-        fullName: "",
-        email:"",
-        password:""
-    })
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    const dispatch = useDispatch()
+    const dispatch=useDispatch()
 
-    const handleChange=(e)=>{
-        setnewUser({...newUser, [e.target.name]: e.target.value})
-    }
-
+    const register = () => {
+        const newUser = {
+          fullName,
+          email,
+          password,
+        };
+    
+        dispatch(registerUser(newUser));
+    
+        setFullName("");
+        setEmail("");
+        setPassword("");
+      };
 
     return (
         <div className='login'>
@@ -28,21 +35,21 @@ const SIGN_UP = () => {
                 <h3>Register</h3>
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" className="form-control" name="fullName" value={newUser.fullName} onChange={handleChange} placeholder="First name" />
+                    <input type="text" className="form-control"  onChange={(e) => setFullName(e.target.value)} placeholder="First name" required/>
                 </div>
 
 
                 <div className="form-group">
                     <label>Email</label>
-                    <input type="email" className="form-control" name="email" value={newUser.email} onChange={handleChange} placeholder="Enter email" />
+                    <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control"  name="password" value={newUser.password} onChange={handleChange} placeholder="Enter password" />
+                    <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} placeceholder="Enter password" required />
                 </div>
 
-                <button type="submit" className="btn btn-light btn-block" onClick={dispatch(registerUser(newUser))}>Register</button>
+                <button type="submit" className="btn btn-info btn-block" onClick= {()=>register()}>Register</button>
                 <p className="forgot-password text-right">
                     Already registered <a href="#">log in?</a>
                 </p>
