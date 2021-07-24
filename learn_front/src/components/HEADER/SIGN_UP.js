@@ -1,12 +1,21 @@
 import React from 'react'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './header.css'
 import {registerUser} from '../../JS/action/actionUser'
+import { BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
+import LOGIN from './LOGIN'
 
 
 const SIGN_UP = () => {
 
+     
+    const loading = useSelector((state) => state. reducerUser.loading);
+    const user= useSelector((state) => state. reducerUser.user);
+    const errors= useSelector((state) => state. reducerUser.errors);
+    
+
+    
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -19,15 +28,24 @@ const SIGN_UP = () => {
           email,
           password,
         };
+
+
+
     
         dispatch(registerUser(newUser));
-    
-        setFullName("");
-        setEmail("");
-        setPassword("");
+
       };
 
-    return (
+      
+
+    return loading ? (
+        <div className='wait'>
+        <h3>Please Wait </h3>
+        <div className="loader">  
+        </div>
+        </div>
+      ) :(
+       
         <div className='login'>
         <img className='img_register' src="./register.jpg"></img>
         <div className='box_login'>
@@ -51,14 +69,27 @@ const SIGN_UP = () => {
 
                 <button type="submit" className="btn btn-info btn-block" onClick= {()=>register()}>Register</button>
                 <p className="forgot-password text-right">
-                    Already registered <a href="#">log in?</a>
+                    Already registered 
+                    <Link to={"/sign-in"}>     log in?</Link>
                 </p>
             </form>
          <div>
         </div>
+        {!user ? Object.values(errors).map((el)=><p> {el.map((items)=><li>{items.msg}</li>)}</p>) : <p> {user.msg}</p> }
         </div>
+        
+     <Router>
+        <Route exact path="/sign-in" component={LOGIN} />
+        </Router>
+         
         </div>
+        
+
+
+
+
     )
+         
 }
 
 export default SIGN_UP

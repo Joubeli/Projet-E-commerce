@@ -14,6 +14,7 @@ import {
     loading: false,
     isAuth: false,
     user: {},
+    errors:{},
   };
   
   const reducerUser = (state = initialState, { type, payload }) => {
@@ -58,8 +59,7 @@ import {
           isAuth: true,
         };
   
-      default:
-        return state;
+        default: return state
     }
   };
   

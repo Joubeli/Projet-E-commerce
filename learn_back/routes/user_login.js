@@ -2,11 +2,17 @@ const User = require('../model/user_login')
 const express= require('express')
 const router = express.Router()
 const bcrypt= require('bcrypt')
+const jwt = require("jsonwebtoken");
+
+const { registerRules, validator } = require("../middlewares/validator");
+
+const passport = require("passport-jwt");
+const isAuth = require("../middlewares/passport-setup");
 
 
 //Register User 
 
-router.post("/register", async (req,res) =>{
+router.post("/register",registerRules(), validator, async (req,res) =>{
     const user= {...req.body}
     const email = user.email
     const email_exist= await User.findOne({email})
@@ -27,7 +33,56 @@ router.post("/register", async (req,res) =>{
 
 })
 
+//Login User
+router.post("/login", async(req,res)=>{
 
+   const { email, password } = req.body;
+
+  console.log(email);
+
+  const user = await User.findOne({ email });
+
+  console.log(user);
+
+  if (!user) return res.status(400).json({ msg: "Bad credentiel" });
+
+  console.log(user);
+
+  console.log(password, user.password);
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  console.log(isMatch);
+
+  if (!isMatch) return res.status(400).json({ msg: "Bad credentiel" });
+
+  const payload = {
+    id: user._id,
+    fullName: user.fullName,
+    email: user.email,
+  };
+
+  try {
+    const token = await jwt.sign(payload, process.env.SECRET_OR_KEY);
+
+    res
+      .status(202)
+      .json({ msg: "Login with success", token: `Bearer ${token}` });
+  } catch (error) {
+    console.error("Login failed", error);
+    res.status(400).json({ msg: "Login failed" });
+  }
+
+//Redirect
+
+router.get("/currentpage", isAuth(), function (req, res) {
+  res.json(req.user);
+});
+
+
+
+
+})
 module.exports=router
 
 

@@ -2,15 +2,13 @@
   display: flex;
   width: 450px;
   flex-direction: column;
-
   background-color: rgb(255, 255, 255);
-
   border-radius: 15px;
   overflow: hidden;
-  padding: 25px 25px 25px 25px;
-  height: 500px;
-  margin: 0px;
-  border-radius: 65px;
+  padding: 45px 25px 25px 25px;
+  height: 550px;
+  margin-top: 150px;
+  border-radius: 25px;
 }
 .box_login:hover {
   box-shadow: 0 5px 10px 0 #1b2734;
@@ -19,21 +17,21 @@
 
 .login {
   display: flex;
-  border-radius: 55px;
+  justify-content: center;
+  margin-right: 150px;
 }
 
-.img_login {
-  height: 500px;
-  width: 750px;
+.img_register {
+  height: 700px;
+  width: 650px;
   margin: 0px;
   padding: 0px;
 }
-.img_register {
-  height: 500px;
-  width: 550px;
-  margin-left: 150px;
-  padding: 0px;
-  border-radius: 360px;
+.img_login {
+  height: 600px;
+  width: 650px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 100px;
 }
 
 * {
@@ -119,3 +117,26 @@ html,
 .forgot-password a {
   color: #167bff;
 }
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+ 
+}
+
+.wait{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
