@@ -12,6 +12,7 @@ const isAuth = require("../middlewares/passport-setup");
 
 //Register User 
 
+
 router.post("/register",registerRules(), validator, async (req,res) =>{
     const user= {...req.body}
     const email = user.email
@@ -44,7 +45,7 @@ router.post("/login", async(req,res)=>{
 
   console.log(user);
 
-  if (!user) return res.status(400).json({ msg: "Bad credentiel" });
+  if (!user) return res.status(400).json({ msg: "Bad Credentials" });
 
   console.log(user);
 

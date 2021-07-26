@@ -1,12 +1,27 @@
 const express= require('express')
 const Connect= require('./config/connect')
+const multer = require('multer');
+var fs = require('fs');
+var path = require('path');
+
 
 const app= express()
 app.use(express.json())
 
+// user Router
 app.use("/user", require("./routes/user_login"))
+//Product Router
+app.use("/product" , require("./routes/product"))
+
 
 require("dotenv").config({ path: "./config/.env" });
+
+
+
+
+
+
+
 
 Connect()
 
