@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-ro
 import './header.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {userLogin} from '../../JS/action/actionUser'
-import UserProfile  from "../PROFILE_ADMIN/Profile"
+import HEADER from '../HEADER/HEADER'
+
 
 const LOGIN = () => {
     const [email, setEmail] = useState("");
@@ -35,7 +36,8 @@ const LOGIN = () => {
         </div>
         </div>
       ) :(
-       
+     <div>
+        <HEADER/>
         <div className='login'>
             <img className='img_login' src="./login1.png" alt="profile photo"></img>
             <div className='box_login'>
@@ -62,19 +64,11 @@ const LOGIN = () => {
                         Forgot <a href="#">password?</a>
                     </p>
                 </form>
-
-                
-            <p> {errors.msg}</p>
-            
+   
+            <p style={{listStyle: 'none', color: 'red', fontWeight: 'bold'}}> {errors.msg}</p>
             </div>
-            <Router>
-            <Route
-          exact
-          path="/Profile"
-          render={() => (
-            <UserProfile  />
-          )}
-        /></Router>
+           
+        </div>
         </div>
     )
 }

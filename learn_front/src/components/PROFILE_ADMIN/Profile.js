@@ -3,15 +3,22 @@ import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css"
 import "./profile.css"
-
-
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 const UserProfile = () => {
   
   const isAuth = useSelector((state) => state.reducerUser.isAuth);
+  const user= useSelector((state)=> state.reducerUser.user)
+  
+  const logout = () => {
+    {
+      localStorage.clear();
+      window.location.href = 'http://localhost:3000';
+    }
+  };
 
-  // console.log(isAuth);
+
   if (!isAuth) {
     return <Redirect to="/sign-in" />;
   }
@@ -19,14 +26,14 @@ const UserProfile = () => {
 
     <div>
     <div className='account'>
-
       <div className='sidebar'>
 			<h5>Navigation</h5>
       <div className='navbar_Admin'>
 			<a href="#">
 					<img src="./login1.png" alt="profile photo" width="70" height="auto"/>
-						<h4>Jane Donovan</h4>
-						<p>Administrator</p>
+						<h4>{user.fullName}</h4>
+						<p>{user.email}</p>
+            <p>Administrator</p>
 				  </a>
 		</div>
 			<ul>
@@ -36,7 +43,7 @@ const UserProfile = () => {
 				<li><a href="#forms"><em className="fa fa-pencil-square-o"></em> Product</a></li>
 				<li><a href="#buttons"><em className="fa fa-hand-o-up"></em> Charts</a></li>
 				<li><a href="#tables"><em className="fa fa-table"></em> Notfication</a></li>
-				<li><a href="#grid"><em className="fa fa-columns"></em> Log Out</a></li>
+				<li><button className="btn btn-warning btn-block" onClick={() => logout()} style={{width: '150px', height: 'auto', marginLeft:'15px'}}>Logout</button></li>
 			</ul>
      
     
