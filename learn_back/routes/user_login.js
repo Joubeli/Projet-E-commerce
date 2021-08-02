@@ -73,7 +73,7 @@ router.post("/login", async(req,res)=>{
     console.error("Login failed", error);
     res.status(400).json({ msg: "Login failed" });
   }
-
+})
 //Redirect
 
 router.get("/currentpage", isAuth(), function (req, res) {
@@ -81,9 +81,13 @@ router.get("/currentpage", isAuth(), function (req, res) {
 });
 
 
-
-
+router.get("/users", (req, res) => {
+  User.find()
+      .then(users => res.status(200).json(users))
+      .catch(err => res.send(err))
 })
+
+
 module.exports=router
 
 

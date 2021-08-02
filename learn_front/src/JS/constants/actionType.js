@@ -9,3 +9,18 @@ export const USER_LOGIN_FAILED = "USER_LOGIN_FAILED";
 export const GET_USER = "GET_USER";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_FAILED = "GET_USER_FAILED";
+
+export const GET_USER_ALL = "GET_USER_ALL";
+
+
+
+//Product
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const ADD_PRODUCT_SUCCESS = "ADD_PRODUCT_SUCCESS";
+export const ADD_PRODUCT_FAILED = "ADD_PRODUCT_FAILED";
+export const GET_PRODUCT="GET_PRODUCT"
+
+//Order
+export const ADD_ORDER = "ADD_ORDER";
+export const GET_ORDER = "GET_ORDER";
+

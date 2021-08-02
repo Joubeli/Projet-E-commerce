@@ -8,13 +8,15 @@ import {
     USER_REGISTER,
     USER_REGISTER_FAILED,
     USER_REGISTER_SUCCESS,
+    GET_USER_ALL
   } from "../constants/actionType";
   
   const initialState = {
     loading: false,
     isAuth: false,
     user: {},
-    errors:{}
+    errors:{},
+    users:{},
   };
   
   const reducerUser = (state = initialState, { type, payload }) => {
@@ -25,6 +27,11 @@ import {
         return {
           ...state,
           loading: true,
+        };
+        case GET_USER_ALL:
+        return {
+          ...state,
+          users: payload,
         };
   
       case USER_REGISTER_SUCCESS:

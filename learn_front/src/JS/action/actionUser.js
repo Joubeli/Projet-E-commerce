@@ -9,6 +9,7 @@ import {
     USER_REGISTER,
     USER_REGISTER_FAILED,
     USER_REGISTER_SUCCESS,
+    GET_USER_ALL,
   }  from '../constants/actionType'
 
 
@@ -62,4 +63,8 @@ export const registerUser = (newUser) => async (dispatch) => {
     }
   };
   
-
+export const getUsers = () => (dispatch) => {
+    axios.get("/user/users")
+        .then(res => dispatch({ type: GET_USER_ALL, payload: res.data }))
+        .catch(err => console.log(err))
+}
