@@ -7,15 +7,14 @@ import { useEffect } from "react";
 import { getProfile } from "./JS/action/actionUser";
 import UserProfile from "./components/PROFILE_ADMIN/Profile"
 import { useSelector, useDispatch } from "react-redux";
-import AddProduct from "./components/PROFILE_CLIENT/AddProduct"
 import Profile from "./components/PROFILE_CLIENT/Profile"
 import ShoppingCart from "./components/PROFILE_CLIENT/ShoppingCart"
 import Header from './components/PROFILE_CLIENT/Header'
 import Footer from './components/PROFILE_CLIENT/Footer'
 import Contact from './components/PROFILE_CLIENT/Contact'
 import Products from './components/PROFILE_CLIENT/Products'
-import AddProduct from "./components/PROFILE_ADMIN/AddProduct"
-import AddOrder from "./components/PROFILE_ADMIN/ADDOrder"
+import AddProduct from "./components/PROFILE_CLIENT/AddProduct"
+/* import AddOrder from "./components/PROFILE_CLIENT/ADDOrder" */
 
 function App() {
   const loading = useSelector((state) => state.reducerUser.loading);
@@ -48,16 +47,16 @@ function App() {
             <Route path="/sign-up" component={SIGN_UP} />
             <Route exact path="/profile" render={() => ( <UserProfile />)} /> 
             <Route  path="/client" render={() => ( <Header />)} /> 
-            {/* <Route exact  path="/client" render={() => (<Profile />)} />
+            <Route exact  path="/client" render={() => (<Profile />)} />
             <Route  path="/client" render={() => ( <Footer />)} /> 
             <Route  path="/client" render={() => (<AddProduct />)}/>
             <Route exact   path="/client/products" render={() => (<Products />)}/>
             <Route exact   path="/client/contact" render={() => (<Contact />)}/>
-            <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/> */}
-        </Router>
+            <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/>
+       {/* 
             <Route path="/ADD-Product" render={() => (<AddProduct />)}/>
-            <Route path="/ADD-Order" render={() => (<AddOrder />)}/>
-            </Switch>
+            <Route path="/ADD-Order" render={() => (<AddOrder />)}/> */}
+          
           </Router>
         </div>
         

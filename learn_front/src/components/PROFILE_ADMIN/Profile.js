@@ -14,7 +14,7 @@ import { getProduct } from '../../JS/action/actionProduct'
 import { getOrder } from '../../JS/action/actionOrder'
 import { useDispatch } from "react-redux"
 import NAVBAR from "./NAVBAR"
-import AddProduct from "./AddProduct"
+/* import AddProduct from "./AddProduct" */
 import { Button, Form, FormControl } from 'react-bootstrap'
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -160,8 +160,8 @@ const UserProfile = () => {
       </div>
 
 
-      <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
-
+     {/*  <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
+ */}
 
       <div style={{ marginLeft: "310px", marginTop: "50px" }}>
         <h1 class="display-1">List of Products</h1>

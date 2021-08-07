@@ -2,12 +2,13 @@ import { combineReducers } from "redux";
 import reducerUser from "./reducerUser";
 import reducerProduct from "./reducerProduct";
 // import reducerShop from "./reducerShop"
+import reducerOrder from "./reducerOrder";
 
-const rootReducer = combineReducers({
+/* const rootReducer = combineReducers({
   reducerUser: reducerUser,
   reducerProduct: reducerProduct,
-  // reducerShop: reducerShop,
-import reducerOrder from "./reducerOrder";
+  // reducerShop: reducerShop, */
+
 const rootReducer = combineReducers({
   reducerUser: reducerUser,
   reducerProduct: reducerProduct,
