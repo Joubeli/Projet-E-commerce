@@ -13,7 +13,6 @@ import { getUsers } from '../../JS/action/actionUser'
 import {getProduct} from '../../JS/action/actionProduct'
 import { useDispatch } from "react-redux"
 import NAVBAR from "./NAVBAR"
-import AddProduct from "./AddProduct"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,8 +31,8 @@ const UserProfile = () => {
 
   const isAuth = useSelector((state) => state.reducerUser.isAuth);
   const user = useSelector((state) => state.reducerUser.user)
-  const users = useSelector(state => state.reducerUser.users)
   const products = useSelector(state => state.reducerProduct.products)
+  const users = useSelector(state => state.reducerUser.users)
   const classes = useStyles();
 
   const logout = () => {
@@ -97,15 +96,13 @@ const UserProfile = () => {
 
 
       <NAVBAR />
-      <div id="users" className="users">{users.map((el, i) => (<Users key={i} user={el} />))}</div>
+      <div id="users" className="users">{users.map((el, i) => (
+        <Users key={i} user={el} />))}
+      </div>
       <div id="orders">
         <Orders />
       </div>
-      {/* <div id="products">
-        <Products />
-      </div> */}
-
-<div id="products" className="products">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
+      <div id="products" className="products">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
      
 
     </div>
