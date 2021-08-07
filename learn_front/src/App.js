@@ -47,12 +47,12 @@ function App() {
             <Route path="/sign-up" component={SIGN_UP} />
             <Route exact path="/profile" render={() => ( <UserProfile />)} /> 
             <Route  path="/client" render={() => ( <Header />)} /> 
-            <Route exact  path="/client" render={() => (<Profile />)} />
+            {/* <Route exact  path="/client" render={() => (<Profile />)} />
             <Route  path="/client" render={() => ( <Footer />)} /> 
             <Route  path="/client" render={() => (<AddProduct />)}/>
             <Route exact   path="/client/products" render={() => (<Products />)}/>
             <Route exact   path="/client/contact" render={() => (<Contact />)}/>
-            <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/>
+            <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/> */}
         </Router>
         </div>
         
