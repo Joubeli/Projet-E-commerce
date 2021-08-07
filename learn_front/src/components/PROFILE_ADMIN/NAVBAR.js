@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavDropdown, Nav, Form, FormControl, Button, Navbar } from "react-bootstrap";
+import { NavDropdown, Nav, Form, FormControl, Button, Navbar, Image } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -25,15 +25,7 @@ const NAVBAR = () => {
                             <NavDropdown.Item href="#action5">Products Notifications</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search Users"
-                            className="mr-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
+                
                 </Navbar.Collapse>
             </Navbar>
         

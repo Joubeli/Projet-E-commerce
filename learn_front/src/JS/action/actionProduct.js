@@ -29,3 +29,9 @@ export const getProduct=()=> (dispatch)=>{
     .catch(err=>console.log(err))
     
 }
+
+export const deleteProduct = (id) => (dispatch) => {
+    axios.delete(`/product/${id}`)
+        .then(() => dispatch(getProduct()))
+        .catch(err => console.log(err))
+}

@@ -7,7 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import {Button} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
-
+import {deleteProduct} from '../../JS/action/actionProduct'
+import { useDispatch } from 'react-redux'
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -20,16 +21,21 @@ const useStyles = makeStyles({
 const Products2 = ({product}) => {
   const classes = useStyles();
 
+  const dispatch= useDispatch()
+
+
+  const buffer = product.image.data // e.g., <Buffer 89 50 4e ... >
+  const b64 = new Buffer.from(buffer).toString('base64')
+const mimeType = 'image/png' // e.g., image/png
+
   return (
-    <div className="content">
-    <div className="header_container"><h3 className="title">Products</h3></div>
+  
     <div className="list">
-    <Card style={{margin:"1% 0.2%"}} className={classes.root}>
+    <Card style={{width:"500px"}} className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://images.pexels.com/photos/2860507/pexels-photo-2860507.jpeg?cs=srgb&dl=pexels-nathasha-daher-2860507.jpg&fm=jpg"
-          title="Contemplative Reptile"
+          image={`data:${mimeType};base64,${b64}`}    title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -47,12 +53,12 @@ const Products2 = ({product}) => {
       </CardActionArea>
       <CardActions>
           <Button style={{backgroundColor:"rgb(94,66,166)", margin:"3% 3%"}} variant="light" size="sm">
-              <span style={{color:"white"}}>Delete</span>
+              <span style={{color:"white"}} onClick={() => dispatch(deleteProduct(product._id))} >Delete</span>
           </Button> 
       </CardActions>
     </Card>
     
-    </div>
+
     </div>
   );
 }

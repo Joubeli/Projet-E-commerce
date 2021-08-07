@@ -68,3 +68,10 @@ export const getUsers = () => (dispatch) => {
         .then(res => dispatch({ type: GET_USER_ALL, payload: res.data }))
         .catch(err => console.log(err))
 }
+
+
+export const deleteUser = (id) => (dispatch) => {
+    axios.delete(`/user/${id}`)
+        .then(() => dispatch(getUsers()))
+        .catch(err => console.log(err))
+}

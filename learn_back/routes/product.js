@@ -97,7 +97,7 @@ router.post("/upload",upload.single('file'), async(req, res) => {
 
 const storage = multer.diskStorage({
     destination:  function (req, file, cb) {
-              const dirName =path.join(process.cwd(), './files/')
+              const dirName =path.join(process.cwd(), './routes/files/')
               console.log(dirName)
               if (!fs.existsSync(dirName)){
                       fs.mkdirSync(dirName);
@@ -124,15 +124,22 @@ const storage = multer.diskStorage({
         qte:req.body.qte,
         category:req.body.category,
         image: {
-            data:  fs.readFileSync(path.join('C:/Users/Lenovo/Desktop/Projet-E-commerce/learn_back/files/' + req.file.filename)),
+            data:  fs.readFileSync(path.join(__dirname +'\\files\\' + req.file.filename)),
             contentType: 'image/png'
         }
     });
     try {
-        await product.save();
-        res.status(201).json(product);
+        product.save();
+        res.status(201).json({msg: 'add Product Ok', product});
       } catch (error) {
-        res.status(401).json(product);
+        res.status(401).json({msg: 'add product failed'});
       }
   });
+
+  router.delete("/:_id", (req, res) => {
+    let { _id } = req.params
+    Product.findByIdAndDelete({ _id })
+        .then(() => res.send("Product has been deleted"))
+        .catch(err => res.send(err))
+  })
 module.exports=router

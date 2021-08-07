@@ -1,10 +1,15 @@
 import React from 'react'
-import { Card, Image, Col, Button } from 'react-bootstrap'
+import { Card, Image, Col, Button, Form, FormControl} from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
+import {deleteUser} from '../../JS/action/actionUser'
 
 const Users= ({ user }) => {
 
+  const dispatch= useDispatch()
+
   return (
+    <>
+    
     <div
       style={{
         textAlign: "center",
@@ -13,11 +18,12 @@ const Users= ({ user }) => {
         flexWrap: "warp",
       }}
     >
+      
       <Card
         style={{
-          width: "10rem",
+          width: "11rem",
           height: "16rem",
-          marginRight: "30px",
+          marginRight: "20px",
           marginTop: "30px",
           marginBottom:"45px",
           backgroundColor: "white",
@@ -34,6 +40,7 @@ const Users= ({ user }) => {
             height: "10rem",
           }}
         />
+         
         <Col>
           <Image
           src="./profile.png"
@@ -59,12 +66,13 @@ const Users= ({ user }) => {
             VIP User
           </Card.Text>
         
-        <div className="buttons">
-          <Button variant="outline-danger edit-button" >Delete</Button>
-        </div>
+          <Button style={{backgroundColor:"rgb(94,66,166)", margin:"3% 3%"}} variant="light" size="sm">
+              <span style={{color:"white"}} onClick={() => dispatch(deleteUser(user._id))} >Delete</span>
+          </Button> 
         </Card.Body>
       </Card>
     </div >
+    </>
   )
 }
 

@@ -8,6 +8,7 @@ import { getProfile } from "./JS/action/actionUser";
 import UserProfile from "./components/PROFILE_ADMIN/Profile"
 import { useSelector, useDispatch } from "react-redux";
 import AddProduct from "./components/PROFILE_ADMIN/AddProduct"
+import AddOrder from "./components/PROFILE_ADMIN/ADDOrder"
 
 function App() {
   const loading = useSelector((state) => state.reducerUser.loading);
@@ -41,6 +42,7 @@ function App() {
             <Route path="/sign-up" component={SIGN_UP} />
             <Route exact path="/profile" render={() => ( <UserProfile />)} /> 
             <Route path="/ADD-Product" render={() => (<AddProduct />)}/>
+            <Route path="/ADD-Order" render={() => (<AddOrder />)}/>
             </Switch>
           </Router>
         </div>

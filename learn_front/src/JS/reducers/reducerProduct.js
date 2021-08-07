@@ -7,6 +7,7 @@ const initialState={
     product:{},
     errors:{},
     products:{}
+    
 }
 
 const reducerProduct=(state=initialState, {type,payload})=>{

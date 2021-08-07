@@ -2,7 +2,8 @@ import axios from 'axios'
 
 
 import {ADD_ORDER,
-    GET_ORDER} from '../constants/actionType'
+    ADD_ORDER_SUCCESS,
+    ADD_ORDER_FAILED, GET_ORDER} from '../constants/actionType'
 
 
 export const addOrder =(newOrder)=> async(dispatch)=>{
@@ -10,13 +11,21 @@ export const addOrder =(newOrder)=> async(dispatch)=>{
 
     try{
 
-        const res = await axios.post("/order/display", newOrder)
-        dispatch({type: ADD_ORDER, payload:res.data})
+        const res = await axios.post("/order/upload", newOrder)
+        dispatch({type: ADD_ORDER_SUCCESS, payload:res.data})
 
     }
 
     catch(error){
-        dispatch({type:ADD_ORDER, payload: error.response.data})
+        dispatch({type:ADD_ORDER_FAILED, payload: error.response.data})
 
     }
 };
+
+export const getOrder=()=> (dispatch)=>{
+
+    axios.get('/order/display')
+    .then(res=> dispatch({type:GET_ORDER, payload:res.data}))
+    .catch(err=>console.log(err))
+    
+}

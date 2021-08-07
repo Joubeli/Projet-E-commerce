@@ -1,26 +1,25 @@
 import React from "react"
-import {addProduct} from "../../JS/action/actionProduct"
+import {addOrder} from "../../JS/action/actionOrder"
 import {useSelector, useDispatch} from "react-redux"
 import {useState} from 'react'
 import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom'
-const AddProduct=()=>{
+const AddOrder=()=>{
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [qte, setQte] = useState("");;
-    const [category, setCategory] = useState("");
-    const [image, setImage] = useState("");
+    const [product, setProduct] = useState("");
+    const [date, setDate] = useState("");;
+    const [mod_liv, setMod_liv] = useState("");
+
     const dispatch = useDispatch()
 
-    const addProd=(e)=>{
-        const newProd={
+    const addOrd=(e)=>{
+        const newOrd={
             description,
-            price,
-            qte,
-            category,
-            image
+            product,
+            date,
+            mod_liv
         };
 
-        dispatch(addProduct(newProd))
+        dispatch(addOrder(newOrd))
        
        
     }
@@ -29,43 +28,35 @@ const AddProduct=()=>{
 
     <div>
 
-    <h1>Upload Product</h1>
+    <h1>Add Order</h1>
  
     <div>
-        <form action="/product/upload" method="POST" enctype="multipart/form-data">
+        <form action="/order/upload" method="POST" enctype="multipart/form-data">
             <div>
-                <label for="description">Product Description</label>
+                <label for="description">Order Description</label>
                 <input type="text" id="description" placeholder="Description"
                        name="description"  onChange={(e)=> setDescription(e.target.value)}  required />
             </div>
 
             <div>
-                <label for="price">Product Price</label>
-                <input type="text" id="price" placeholder="Price"
-                       name="price"  onChange={(e)=> setPrice(e.target.value)} required />
+                <label for="product">Product </label>
+                <input type="text" id="product" placeholder="Product"
+                       name="product"  onChange={(e)=> setProduct(e.target.value)} required />
             </div>
             <div>
-                <label for="qte">Product Quantity</label>
-                <input type="text" id="qte" placeholder="Price"
-                       name="qte"  onChange={(e)=> setQte(e.target.value)} required />
+                <label for="date">Date</label>
+                <input type="text" id="date" placeholder="Date"
+                       name="date"  onChange={(e)=> setDate(e.target.value)} required />
             </div>
             <div>
-                <label for="category">Product Category</label>
-                <textarea id="category" name="category" rows="2"
-                          placeholder="Category"  onChange={(e)=> setCategory(e.target.value)} required />
+                <label for="mod_liv">Product Category</label>
+                <textarea id="mod_liv" name="mod_liv" rows="2"
+                          placeholder="mod_liv"  onChange={(e)=> setMod_liv(e.target.value)} required />
                 
             </div>
-            <div class="form-group">
-              <input
-                type="file"
-                name="image"
-                id="input-files"
-                class="form-control-file border"
-                onChange={(e)=> setImage(e.target.value)}
-              />
-            </div>
+           
             <div>
-                <button type="submit" onClick={()=> addProd()}>Submit</button>
+                <button type="submit" onClick={()=> addOrd()}>Submit</button>
             </div>
         </form>
 
@@ -82,4 +73,4 @@ const AddProduct=()=>{
     )
 }
 
-export default AddProduct;
+export default AddOrder;
