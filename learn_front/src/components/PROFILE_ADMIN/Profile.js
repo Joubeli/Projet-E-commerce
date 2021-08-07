@@ -16,7 +16,6 @@ import { useDispatch } from "react-redux"
 import NAVBAR from "./NAVBAR"
 import AddProduct from "./AddProduct"
 import { Button, Form, FormControl } from 'react-bootstrap'
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -34,9 +33,8 @@ const UserProfile = () => {
 
   const isAuth = useSelector((state) => state.reducerUser.isAuth);
   const user = useSelector((state) => state.reducerUser.user)
-  const users = useSelector(state => state.reducerUser.users)
   const products = useSelector(state => state.reducerProduct.products)
-  const orders = useSelector(state => state.reducerOrder.orders)
+  const users = useSelector(state => state.reducerUser.users)
   const classes = useStyles();
 
 
@@ -125,6 +123,13 @@ const UserProfile = () => {
 
 
       <NAVBAR />
+      <div id="users" className="users">{users.map((el, i) => (
+        <Users key={i} user={el} />))}
+      </div>
+      <div id="orders">
+        <Orders />
+      </div>
+      <div id="products" className="products">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
       
       <Form className="d-flex">
         <FormControl
@@ -166,7 +171,6 @@ const UserProfile = () => {
       </div>
 
       <div id="products" className="users">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
-
 
     </div>
   )
