@@ -80,6 +80,7 @@ router.get("/currentpage", isAuth(), function (req, res) {
   res.json(req.user);
 });
 
+//get Users
 
 router.get("/users", (req, res) => {
   User.find()
@@ -87,7 +88,14 @@ router.get("/users", (req, res) => {
       .catch(err => res.send(err))
 })
 
+// Delete users
 
+router.delete("/:_id", (req, res) => {
+  let { _id } = req.params
+  User.findByIdAndDelete({ _id })
+      .then(() => res.send("User has been deleted"))
+      .catch(err => res.send(err))
+})
 module.exports=router
 
 

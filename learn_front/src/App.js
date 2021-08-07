@@ -14,7 +14,8 @@ import Header from './components/PROFILE_CLIENT/Header'
 import Footer from './components/PROFILE_CLIENT/Footer'
 import Contact from './components/PROFILE_CLIENT/Contact'
 import Products from './components/PROFILE_CLIENT/Products'
-
+import AddProduct from "./components/PROFILE_ADMIN/AddProduct"
+import AddOrder from "./components/PROFILE_ADMIN/ADDOrder"
 
 function App() {
   const loading = useSelector((state) => state.reducerUser.loading);
@@ -54,6 +55,10 @@ function App() {
             <Route exact   path="/client/contact" render={() => (<Contact />)}/>
             <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/> */}
         </Router>
+            <Route path="/ADD-Product" render={() => (<AddProduct />)}/>
+            <Route path="/ADD-Order" render={() => (<AddOrder />)}/>
+            </Switch>
+          </Router>
         </div>
         
   

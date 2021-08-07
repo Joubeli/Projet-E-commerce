@@ -7,6 +7,11 @@ const rootReducer = combineReducers({
   reducerUser: reducerUser,
   reducerProduct: reducerProduct,
   // reducerShop: reducerShop,
+import reducerOrder from "./reducerOrder";
+const rootReducer = combineReducers({
+  reducerUser: reducerUser,
+  reducerProduct: reducerProduct,
+  reducerOrder: reducerOrder,
 });
 
 export default rootReducer;

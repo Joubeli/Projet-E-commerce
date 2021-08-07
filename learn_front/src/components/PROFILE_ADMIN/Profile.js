@@ -10,10 +10,12 @@ import Orders from "./Orders";
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import { getUsers } from '../../JS/action/actionUser'
-import {getProduct} from '../../JS/action/actionProduct'
+import { getProduct } from '../../JS/action/actionProduct'
+import { getOrder } from '../../JS/action/actionOrder'
 import { useDispatch } from "react-redux"
 import NAVBAR from "./NAVBAR"
-
+import AddProduct from "./AddProduct"
+import { Button, Form, FormControl } from 'react-bootstrap'
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -35,6 +37,7 @@ const UserProfile = () => {
   const users = useSelector(state => state.reducerUser.users)
   const classes = useStyles();
 
+
   const logout = () => {
     {
       localStorage.clear();
@@ -44,7 +47,7 @@ const UserProfile = () => {
 
   const dispatch = useDispatch()
 
-
+  //Users
   const getAllUsers = () => {
     dispatch(getUsers())
   }
@@ -53,7 +56,7 @@ const UserProfile = () => {
     getAllUsers()
   }, [])
 
-
+  //Products
   const getAllProducts = () => {
     dispatch(getProduct())
   }
@@ -62,24 +65,48 @@ const UserProfile = () => {
     getAllProducts()
   }, [])
 
+
+
+  //Orders
+
+  const getAllOrders = () => {
+    dispatch(getOrder())
+  }
+
+  useEffect(() => {
+    getAllOrders()
+  }, [])
+
+
+
+
   if (!isAuth) {
     return <Redirect to="/sign-in" />;
   }
 
-
   return (
-
     <div>
       <div className='account'>
         <div className='sidebar'>
           <div className='navbar_Admin'>
             <a href="#">
               <div className={classes.root}>
-                <Avatar style={{ marginLeft: "35%", marginTop: "35%"}} alt="Remy Sharp" src="./admin.png" className={classes.large} />
+                <Avatar style={{ marginLeft: "35%", marginTop: "35%" }} alt="Remy Sharp" src="./admin2.png" className={classes.large} />
               </div>
-              <h4 className="admin">{user.fullName}</h4>
-              <p className="admin">{user.email}</p>
-              <p className="role">Administrator</p>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                marginLeft: "15px"
+
+
+              }}>
+                <p class="lead" style={{ color: "white" }}> Administrator</p>
+                <p class="lead" style={{ color: "white" }}> {user.fullName}</p>
+                <p class="lead" style={{ color: "white" }}> {user.email}</p>
+              </div>
+
             </a>
           </div>
           <nav className="nav">
@@ -103,7 +130,47 @@ const UserProfile = () => {
         <Orders />
       </div>
       <div id="products" className="products">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
-     
+      
+      <Form className="d-flex">
+        <FormControl
+          type="search"
+          placeholder="Search Users"
+          className="mr-2"
+          aria-label="Search"
+          style={{width:"200px", marginLeft:"690px"}}
+
+        />
+        <Button class="btn btn-warning btn-lg" >Search</Button>
+      </Form>
+
+      <div style={{ marginLeft: "310px", marginTop: "50px" }}>
+        <h1 class="display-1">List of Users </h1>
+        <p class="lead">
+          As an Admin y can delete any users that publish inappropriate content on your website
+        </p>
+      </div>
+      <div id="users" className="users">{users.map((el, i) => (<Users key={i} user={el} />))}</div>
+
+
+      <div style={{ marginLeft: "310px", marginTop: "50px" }}>
+        <h1 class="display-1">List of Orders </h1>
+        <p class="lead">
+          As an Admin y can verify the order list
+        </p>
+      </div>
+
+
+      <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
+
+
+      <div style={{ marginLeft: "310px", marginTop: "50px" }}>
+        <h1 class="display-1">List of Products</h1>
+        <p class="lead">
+          As an Admin y can verify the Product list and delete inappropriate content
+        </p>
+      </div>
+
+      <div id="products" className="users">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
 
     </div>
   )
@@ -114,35 +181,3 @@ export default UserProfile;
 
 
 
-// import React from 'react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Avatar from '@material-ui/core/Avatar';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     display: 'flex',
-//     '& > *': {
-//       margin: theme.spacing(1),
-//     },
-//   },
-//   small: {
-//     width: theme.spacing(3),
-//     height: theme.spacing(3),
-//   },
-//   large: {
-//     width: theme.spacing(7),
-//     height: theme.spacing(7),
-//   },
-// }));
-
-// export default function ImageAvatars() {
-//   const classes = useStyles();
-
-//   return (
-//     <div className={classes.root}>
-//       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.small} />
-//       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-//       <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className={classes.large} />
-//     </div>
-//   );
-// }
