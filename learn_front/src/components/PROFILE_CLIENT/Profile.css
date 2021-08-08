@@ -284,6 +284,10 @@ li{
     justify-content: space-between;
 }
 
+.products_header{
+    
+}
+
 .products_list{
     display: flex;
     /* width: 100%; */

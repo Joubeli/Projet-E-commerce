@@ -10,8 +10,12 @@ import prod6 from "../../img/prod6.webp"
 const Products = () => {
     return (
         <div className="products">
-            
-                <h1 className="section_title">Products</h1>
+            <div className="products_header">
+                <h1 className="section_title">Products</h1>                
+                <div className="icons">
+                    <Form.Control className="search_bar" size="sm" type="text" placeholder="Search Products"/>
+                </div>
+            </div>
                 <hr style={{color:"gray"}} />
                 <div className="products_list">
                     <div className="box">

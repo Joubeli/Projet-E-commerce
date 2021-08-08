@@ -26,7 +26,7 @@ const Products2 = ({product}) => {
 
   const buffer = product.image.data // e.g., <Buffer 89 50 4e ... >
   const b64 = new Buffer.from(buffer).toString('base64')
-const mimeType = 'image/png' // e.g., image/png
+  const mimeType = 'image/png' // e.g., image/png
 
   return (
   
