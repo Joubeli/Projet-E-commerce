@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { Form } from "react-bootstrap"
 
 const Header = () => {
     return (            
@@ -23,9 +22,6 @@ const Header = () => {
                         <a className="icon"><em className="fa fa-shopping-cart"></em></a>
                     </div>
                 </Link>
-                <div className="icons">
-                    <Form.Control className="search_bar" size="sm" type="text" placeholder="Search Products"/>
-                </div>
                 <span className="username">
                     Hi, Imen
                 </span>   

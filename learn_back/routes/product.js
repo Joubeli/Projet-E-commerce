@@ -130,7 +130,7 @@ const storage = multer.diskStorage({
     });
     try {
         product.save();
-        res.status(201).json({msg: 'add Product Ok', product});
+        res.status(201);
       } catch (error) {
         res.status(401).json({msg: 'add product failed'});
       }

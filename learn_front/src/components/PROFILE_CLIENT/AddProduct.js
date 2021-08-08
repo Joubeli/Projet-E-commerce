@@ -1,27 +1,23 @@
 import React from "react"
-import "./Profile.css"
 import {addProduct} from "../../JS/action/actionProduct"
 import {useSelector, useDispatch} from "react-redux"
 import {useState} from 'react'
-import { Modal, Form  } from "react-bootstrap"
+import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom'
 
 
 const AddProduct=()=>{
-    
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [qte, setQte] = useState("");;
     const [category, setCategory] = useState("");
     const [image, setImage] = useState("");
+
+  
+ 
+
     const dispatch = useDispatch()
 
     const addProd=(e)=>{
-        // e.preventDefault()
         const newProd={
             description,
             price,
@@ -29,12 +25,6 @@ const AddProduct=()=>{
             category,
             image
         };
-
-        setDescription('')
-        setPrice('')
-        setQte('')
-        setCategory('')
-        setImage('')
 
         dispatch(addProduct(newProd))
        
@@ -44,44 +34,50 @@ const AddProduct=()=>{
     return(
 
     <div>
+
+    <h1>Upload Product</h1>
+ 
+    <div>
+        <form action="/product/upload" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="description">Product Description</label>
+                <input type="text" id="description" placeholder="Description"
+                       name="description"  onChange={(e)=> setDescription(e.target.value)}  required />
+            </div>
+
+            <div>
+                <label for="price">Product Price</label>
+                <input type="text" id="price" placeholder="Price"
+                       name="price"  onChange={(e)=> setPrice(e.target.value)} required />
+            </div>
+            <div>
+                <label for="qte">Product Quantity</label>
+                <input type="text" id="qte" placeholder="Price"
+                       name="qte"  onChange={(e)=> setQte(e.target.value)} required />
+            </div>
+            <div>
+                <label for="category">Product Category</label>
+                <textarea id="category" name="category" rows="2"
+                          placeholder="Category"  onChange={(e)=> setCategory(e.target.value)} required />
                 
-    <button className="button add-product" onClick={handleShow}>
-        Add Product
-    </button> 
+            </div>
+            <div class="form-group">
+              <input
+                type="file"
+                name="image"
+                id="input-files"
+                class="form-control-file border"
+                onChange={(e)=> setImage(e.target.value)}
+              />
+            </div>
+            <div>
+                <button type="submit" onClick={()=> addProd()}>Submit</button>
+            </div>
+        </form>
 
-    <Modal className="modal" show={show} onHide={handleClose} animation={true}>
-        <Modal.Header>
-            <Modal.Title className="modal_title">Add A Product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="modal_body">
-            <Form action="/product/upload" method="POST" encType="multipart/form-data">
-                    <Form.Label className="modal_labels">Description</Form.Label>
-                    <Form.Control className="modal_input" onChange={(e) => setDescription(e.target.value)} type="text" value={description}/>
-                <br />
-                    <Form.Label className="modal_labels">Price</Form.Label>       
-                    <Form.Control className="modal_input"  onChange={(e) => setPrice(e.target.value)} type="text" value={price} name="price" id="price" />
-                <br />
-                    <Form.Label className="modal_labels">Quantity</Form.Label>
-                    <Form.Control className="modal_input"  onChange={(e) => setQte(e.target.value)} type="text" value={qte} name="qte" id="qte" />
-                <br />                    
-                    <Form.Label className="modal_labels">Category</Form.Label>
-                    <Form.Control className="modal_input"  onChange={(e) => setCategory(e.target.value)} type="text" value={category} name="category" id="category" />
-                    <br />                    
-
-                <input
-                    type="file"
-                    className="custom-file-input"
-                    name="image"
-                    id="input-files"
-                    onChange={(e)=> setImage(e.target.value)}
-                />
-            </Form>
-            </Modal.Body>  
-            <Modal.Footer className="modal_footer">
-                <button className="button" onClick={()=> addProd()}>Add</button>
-                <button className="button" onClick={handleClose} >Close</button>
-            </Modal.Footer>
-    </Modal>
+       
+     
+    </div>
     </div>
  
    

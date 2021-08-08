@@ -25,3 +25,8 @@ export const ADD_ORDER = "ADD_ORDER";
 export const GET_ORDER = "GET_ORDER";
 export const ADD_ORDER_SUCCESS = "ADD_ORDER_SUCCESS";
 export const ADD_ORDER_FAILED = "ADD_ORDER_FAILED";
+
+//Shopping_Cart
+export const ADD_TO_CART = "ADD_TO_CART";
+export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+export const ADJUST_QTY = "ADJUST_QTY";

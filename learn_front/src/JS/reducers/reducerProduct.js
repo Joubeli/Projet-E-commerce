@@ -1,12 +1,15 @@
-import {ADD_PRODUCT,
-    ADD_PRODUCT_SUCCESS,
-    ADD_PRODUCT_FAILED, GET_PRODUCT} from '../constants/actionType'
+import {
+        ADD_PRODUCT,
+        ADD_PRODUCT_SUCCESS,
+        ADD_PRODUCT_FAILED,
+        GET_PRODUCT
+    } from '../constants/actionType'
 
 const initialState={
 
     product:{},
     errors:{},
-    products:{}
+    products:[]
     
 }
 
