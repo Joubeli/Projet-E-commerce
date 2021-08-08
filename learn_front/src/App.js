@@ -14,7 +14,7 @@ import Footer from './components/PROFILE_CLIENT/Footer'
 import Contact from './components/PROFILE_CLIENT/Contact'
 import Products from './components/PROFILE_CLIENT/Products'
 import AddProduct from "./components/PROFILE_CLIENT/AddProduct"
-/* import AddOrder from "./components/PROFILE_CLIENT/ADDOrder" */
+import AddOrder from "./components/PROFILE_CLIENT/ADDOrder" 
 
 function App() {
   const loading = useSelector((state) => state.reducerUser.loading);
@@ -49,13 +49,13 @@ function App() {
             <Route  path="/client" render={() => ( <Header />)} /> 
             <Route exact  path="/client" render={() => (<Profile />)} />
             <Route  path="/client" render={() => ( <Footer />)} /> 
-            <Route  path="/client" render={() => (<AddProduct />)}/>
+            {/* <Route  path="/client" render={() => (<AddProduct />)}/> */}
             <Route exact   path="/client/products" render={() => (<Products />)}/>
             <Route exact   path="/client/contact" render={() => (<Contact />)}/>
             <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/>
-       {/* 
-            <Route path="/ADD-Product" render={() => (<AddProduct />)}/>
-            <Route path="/ADD-Order" render={() => (<AddOrder />)}/> */}
+        
+            <Route path="/client/ADD-Product" render={() => (<AddProduct />)}/>
+            <Route path="/client/ADD-Order" render={() => (<AddOrder />)}/> 
           
           </Router>
         </div>
