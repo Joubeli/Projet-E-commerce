@@ -13,6 +13,8 @@ const LOGIN = () => {
     const [password, setPassword] = useState("");
 
     const loading = useSelector((state) => state.reducerUser.loading);
+    const users = useSelector(state => state.reducerUser.users)
+    const user = useSelector(state => state.reducerUser.users)
     const isAuth = useSelector((state) => state.reducerUser.isAuth);
     const errors= useSelector((state) => state. reducerUser.errors);
 
@@ -26,10 +28,7 @@ const LOGIN = () => {
 
         dispatch(userLogin(loginCred));
     };
-    return isAuth ? (
-        <Redirect to="./Profile" />
-      ) :
-     loading ? (
+    return  isAuth?  <Redirect to="./Profile" /> : loading ? (
         <div className='wait'>
         <h3>Please Wait </h3>
         <div className="loader">  
@@ -69,6 +68,7 @@ const LOGIN = () => {
             </div>
            
         </div>
+       
         </div>
     )
 }

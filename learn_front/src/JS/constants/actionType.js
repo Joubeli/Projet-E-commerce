@@ -12,6 +12,8 @@ export const GET_USER_FAILED = "GET_USER_FAILED";
 
 export const GET_USER_ALL = "GET_USER_ALL";
 
+export const GET_USER_SEARCH = "GET_USER_SEARCH";
+
 
 
 //Product
@@ -19,12 +21,14 @@ export const ADD_PRODUCT = "ADD_PRODUCT";
 export const ADD_PRODUCT_SUCCESS = "ADD_PRODUCT_SUCCESS";
 export const ADD_PRODUCT_FAILED = "ADD_PRODUCT_FAILED";
 export const GET_PRODUCT="GET_PRODUCT"
+export const GET_PRODUCT_SEARCH = "GET_PRODUCT_SEARCH";
 
 //Order
 export const ADD_ORDER = "ADD_ORDER";
 export const GET_ORDER = "GET_ORDER";
 export const ADD_ORDER_SUCCESS = "ADD_ORDER_SUCCESS";
 export const ADD_ORDER_FAILED = "ADD_ORDER_FAILED";
+export const GET_ORDER_SEARCH = "GET_ORDER_SEARCH";
 
 //Shopping_Cart
 export const ADD_TO_CART = "ADD_TO_CART";

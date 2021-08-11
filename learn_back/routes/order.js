@@ -21,6 +21,14 @@ router.post('/upload', async(req,res)=>{
 })
 
 
+router.delete("/:_id", (req, res) => {
+    let { _id } = req.params
+    Order.findByIdAndDelete({ _id })
+        .then(() => res.send("Order has been deleted"))
+        .catch(err => res.send(err))
+  })
+
+
 
 router.get('/display', async (req,res)=>{
 
@@ -28,5 +36,12 @@ router.get('/display', async (req,res)=>{
     .then(orders => res.status(200).json(orders))
     .catch(err => res.send(err))
 })
+
+router.get("/:description", (req, res) => {
+    let { description } = req.params
+    Order.find({ description })
+    .then(search => res.status(200).json(search))
+    .catch(err => res.send(err))
+  })
 
 module.exports=router

@@ -60,7 +60,7 @@ router.post("/login", async(req,res)=>{
   const payload = {
     id: user._id,
     fullName: user.fullName,
-    email: user.email,
+    email: user.email
   };
 
   try {
@@ -95,6 +95,13 @@ router.delete("/:_id", (req, res) => {
   User.findByIdAndDelete({ _id })
       .then(() => res.send("User has been deleted"))
       .catch(err => res.send(err))
+})
+
+router.get("/:fullName", (req, res) => {
+  let { fullName } = req.params
+  User.find({ fullName })
+  .then(search => res.status(200).json(search))
+  .catch(err => res.send(err))
 })
 module.exports=router
 
