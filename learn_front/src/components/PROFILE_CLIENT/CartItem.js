@@ -1,6 +1,7 @@
 import React from "react";
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import "./Profile.css";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ item }) => {
   return (
@@ -9,11 +10,13 @@ const CartItem = ({ item }) => {
       <div className="item-img">
         <img src={item.image} alt="item" />
       </div>
-      <div className="item-desc">{item.description}</div>
+      <div className="item-desc">{item.title}</div>
       <div className="item-price">{item.price}</div>
       <div className="item-qty">{item.qty}</div>
       <div className="item-delete"><em className="fa fa-trash"></em></div>      
+      <Link params = { item.title } to="/client/ADD-Order"><button className="button order-button">Order</button></Link>
     </div>
+    
   );
 };
 

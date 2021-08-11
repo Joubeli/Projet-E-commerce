@@ -30,7 +30,7 @@ const Products = () => {
             <hr style={{color:"gray", marginTop:"1%"}} />
             <div className="products_list">      
                 <div className="box">
-                        <div id="products" className="products">{products.map((el, i) => (<Product key={i} product={el} />))}</div>
+                        <div id="products" className="products">{products.map((prod) => (<Product key={prod.id} productData={prod} />))}</div>
                 </div>
             </div>
         </div>            

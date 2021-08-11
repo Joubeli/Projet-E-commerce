@@ -247,18 +247,25 @@ li{
     padding-top: 3%;
 }
 
+/***********SHOP BY CATEGORY***************/
+.shop_by_category{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5% 10%;
+    background-color: yellow;
+}
 
+.section{
+    width: 30%;
+    /* margin: 0 5%; */
+    background-color: red;
+}
 
 /*****************BANNER******************/
 .banner{
-    /* margin-top: 2%; */
     background-color: rgb(200,235,255);
     display: flex;
-    /* width: 100%; */
-}
-
-.img{
-    /* margin-top: 2%; */
 }
 
 .discount_release{

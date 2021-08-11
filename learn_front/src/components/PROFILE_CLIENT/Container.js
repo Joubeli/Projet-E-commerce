@@ -3,6 +3,9 @@ import "./Profile.css"
 import { Link } from "react-router-dom"
 import contact from "../../img/contact_background.png.webp"
 import img from "../../img/home.webp"
+import img1 from "../../img/img1.webp"
+import img2 from "../../img/img2.webp"
+import img3 from "../../img/img3.webp"
 
 const Container = () => {
     return (
@@ -29,6 +32,19 @@ const Container = () => {
             <div className="best_products">
 
             </div>
+
+            <div className="shop_by_category">
+                <div className="section">
+                    <img src={img1} alt="" height="50%"/>
+                </div>
+                <div className="section">
+                    <img src={img2} alt="" height="50%"/>
+                </div>
+                <div className="section">
+                    <img src={img3} alt="" height="50%"/>
+                </div>
+            </div>
+
             <div className="contact">
                 <hr style={{color:"gray"}} />
                 <div className="contact_section" style={{backgroundImage:`Url(${contact})`}}>

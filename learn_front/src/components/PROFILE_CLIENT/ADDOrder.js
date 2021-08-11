@@ -140,8 +140,8 @@ const AddOrder = () => {
         </div>
 
         <div>
-          <button className="button" style={{marginLeft:"35%", marginTop:"2%"}} type="submit" onClick={() => addOrd()}>
-            Submit
+          <button className="button" style={{marginLeft:"30%", marginTop:"2%", width:"150px"}} type="submit" onClick={() => addOrd()}>
+            Confirm Order
           </button>
         </div>
       </form>
