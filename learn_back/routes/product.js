@@ -117,7 +117,7 @@ const storage = multer.diskStorage({
     }
   });
   
-  router.post("/upload", upload.single('image'), async(req, res, next) => {
+  router.post("/upload", upload.single('image'), async(req, res) => {
     const product = new Product({
         description: req.body.description,
         price: req.body.price,
@@ -128,12 +128,12 @@ const storage = multer.diskStorage({
             contentType: 'image/png'
         }
     });
-    try {
-        product.save();
-        res.status(201);
-      } catch (error) {
-        res.status(401).json({msg: 'add product failed'});
-      }
+    
+        product.save()
+        res.redirect('/client');
+
+        
+      
   });
 
   router.delete("/:_id", (req, res) => {
