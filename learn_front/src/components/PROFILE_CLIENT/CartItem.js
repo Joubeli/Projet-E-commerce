@@ -14,8 +14,9 @@ const CartItem = ({ item }) => {
       <div className="item-price">{item.price}</div>
       <div className="item-qty">{item.qty}</div>
       <div className="item-delete"><em className="fa fa-trash"></em></div>      
-      <Link params = { item.description } to="/client/ADD-Order"><button className="button order-button">Order</button></Link>
-    </div>
+
+        </div>
+    
     
   );
 };
