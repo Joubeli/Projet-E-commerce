@@ -35,13 +35,17 @@ const Container = () => {
 
             <div className="shop_by_category">
                 <div className="section">
-                    <img src={img1} alt="" height="50%"/>
+                    <img src={img1} alt="" width="90%"/>
+                    <div className="deals">
+                        <button className="button">Best New Deals</button>
+                    </div>
+                    
                 </div>
                 <div className="section">
-                    <img src={img2} alt="" height="50%"/>
+                    <img src={img2} alt="" width="90%"/>
                 </div>
                 <div className="section">
-                    <img src={img3} alt="" height="50%"/>
+                    <img src={img3} alt="" width="90%"/>
                 </div>
             </div>
 
