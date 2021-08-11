@@ -5,8 +5,16 @@ import { useSelector } from 'react-redux'
 const Header = () => {
 
     const cart = useSelector((state) => state.reducerShop.cart)
+    const user = useSelector((state) => state.reducerUser.user)
 
     const [cartCount, setCartCount] = useState(0)
+
+    const logout = () => {
+        {
+          localStorage.clear();
+          window.location.href = 'http://localhost:3000';
+        }
+      };
 
     useEffect(() => {
         let count = 0;
@@ -46,11 +54,12 @@ const Header = () => {
             </div>
             <Link to="/client/add-product"><button className="button">Add Product</button></Link>
 
-            <span className="username">
-                Hi, Imen !
-            </span>
+            <button className="button" onClick={() => logout()}>Sign Out</button>
 
-            <button className="button">Sign Out</button>
+            <span  className="username" >
+              <p> {user.fullName}  : {user.email}</p>
+            </span>
+            
 
         </div>        
     )

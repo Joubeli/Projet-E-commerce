@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
   reducerUser: reducerUser,
   reducerProduct: reducerProduct,
   reducerOrder: reducerOrder,
+  reducerShop:reducerShop
  
 });
 
