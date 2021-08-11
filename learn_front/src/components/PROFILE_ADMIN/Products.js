@@ -9,6 +9,7 @@ import {Button} from 'react-bootstrap';
 import Typography from '@material-ui/core/Typography';
 import {deleteProduct} from '../../JS/action/actionProduct'
 import { useDispatch } from 'react-redux'
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,

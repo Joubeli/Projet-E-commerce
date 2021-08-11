@@ -18,15 +18,13 @@ const Container = () => {
             </div>
             <div className="latest">
                 <div className="menu">
-                    <h1 className="section_title"> Latest Products</h1>
+                    <h1 className="section_title" style={{marginLeft:"-15%"}}> Latest Products</h1>
                     <ul className="latest_menu">
                         <li style={{color: "#ff003c"}}>All</li>
                         <li>New</li>
                     </ul>
                 </div>
-                    <hr style={{color:"gray"}} />
-
-
+                    <hr style={{color:"gray", marginTop:"-1%"}} />
             </div>
             <div className="best_products">
 

@@ -35,6 +35,7 @@ const UserProfile = () => {
   const user = useSelector((state) => state.reducerUser.user)
   const products = useSelector(state => state.reducerProduct.products)
   const users = useSelector(state => state.reducerUser.users)
+  const orders = useSelector(state => state.reducerOrder.orders)
   const classes = useStyles();
 
 
@@ -160,8 +161,7 @@ const UserProfile = () => {
       </div>
 
 
-     {/*  <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
- */}
+     <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
 
       <div style={{ marginLeft: "310px", marginTop: "50px" }}>
         <h1 class="display-1">List of Products</h1>

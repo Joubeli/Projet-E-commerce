@@ -33,7 +33,8 @@ function App() {
 
   useEffect(() => {
     getUser();
-  }, []); 
+
+  }, [isAuth]); 
 
 
   
@@ -49,7 +50,6 @@ function App() {
             <Route  path="/client" render={() => ( <Header />)} /> 
             <Route exact  path="/client" render={() => (<Profile />)} />
             <Route  path="/client" render={() => ( <Footer />)} /> 
-            {/* <Route  path="/client" render={() => (<AddProduct />)}/> */}
             <Route exact   path="/client/products" render={() => (<Products />)}/>
             <Route exact   path="/client/contact" render={() => (<Contact />)}/>
             <Route exact  path="/client/shopping_cart" render={() => (<ShoppingCart />)}/>

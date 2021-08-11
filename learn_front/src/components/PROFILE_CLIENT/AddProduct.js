@@ -1,91 +1,164 @@
-import React from "react"
-import {addProduct} from "../../JS/action/actionProduct"
-import {useSelector, useDispatch} from "react-redux"
-import {useState} from 'react'
-import { BrowserRouter as Router, Link, Route, Switch, Redirect } from 'react-router-dom'
+import React from "react";
+import { addProduct } from "../../JS/action/actionProduct";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import "./Profile.css";
 
+const AddProduct = () => {
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [qte, setQte] = useState("");
+  const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
 
-const AddProduct=()=>{
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [qte, setQte] = useState("");;
-    const [category, setCategory] = useState("");
-    const [image, setImage] = useState("");
+  const dispatch = useDispatch();
 
-  
- 
+  const addProd = (e) => {
+    const newProd = {
+      description,
+      price,
+      qte,
+      category,
+      image,
+    };
+    dispatch(addProduct(newProd));
+  };
 
-    const dispatch = useDispatch()
-
-    const addProd=(e)=>{
-        const newProd={
-            description,
-            price,
-            qte,
-            category,
-            image
-        };
-
-        dispatch(addProduct(newProd))
-       
-       
-    }
-
-    return(
-
-    <div>
-
-    <h1>Upload Product</h1>
- 
-    <div>
-        <form action="/product/upload" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="description">Product Description</label>
-                <input type="text" id="description" placeholder="Description"
-                       name="description"  onChange={(e)=> setDescription(e.target.value)}  required />
-            </div>
-
-            <div>
-                <label for="price">Product Price</label>
-                <input type="text" id="price" placeholder="Price"
-                       name="price"  onChange={(e)=> setPrice(e.target.value)} required />
-            </div>
-            <div>
-                <label for="qte">Product Quantity</label>
-                <input type="text" id="qte" placeholder="Price"
-                       name="qte"  onChange={(e)=> setQte(e.target.value)} required />
-            </div>
-            <div>
-                <label for="category">Product Category</label>
-                <textarea id="category" name="category" rows="2"
-                          placeholder="Category"  onChange={(e)=> setCategory(e.target.value)} required />
-                
-            </div>
-            <div class="form-group">
-              <input
-                type="file"
-                name="image"
-                id="input-files"
-                class="form-control-file border"
-                onChange={(e)=> setImage(e.target.value)}
-              />
-            </div>
-            <div>
-                <button type="submit" onClick={()=> addProd()}>Submit</button>
-            </div>
-        </form>
-
-       
-     
+  return (
+    <div className="add-product">
+      <form
+        action="/product/upload"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <h1
+          style={{ fontSize: "2.3em", marginLeft: "16%", marginTop: "-7%", marginBottom:"1%"}}
+          className="section_title"
+        >
+          Add Product
+        </h1>
+        <div className="form-group">
+          <label
+            for="exampleFormControlInput1"
+            style={{ fontFamily: "'El Messiri', sans-serif", color: "#8f8f96"}}
+            for="description"
+          >
+            Description
+          </label>
+          <input
+            className="form-control" 
+            type="text"
+            id="description"
+            value={description}
+            style={{
+              fontFamily: "'El Messiri', sans-serif",
+              height: "calc(2.5em + 0.75rem + 2px)",
+              borderColor: "#bfb9ce",
+              borderRadius: "2rem",
+              marginBottom: "2%",
+            }}
+            name="description"
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            for="exampleFormControlInput1"
+            style={{ fontFamily: "'El Messiri', sans-serif", color: "#8f8f96"}}
+            for="price"
+          >
+            Price
+          </label>
+          <input
+            className="form-control" 
+            type="text"
+            id="price"
+            style={{
+              fontFamily: "'El Messiri', sans-serif",
+              height: "calc(2.5em + 0.75rem + 2px)",
+              borderColor: "#bfb9ce",
+              borderRadius: "2rem",
+              marginBottom: "2%",
+            }}
+            name="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            for="exampleFormControlInput1"
+            style={{ fontFamily: "'El Messiri', sans-serif", color: "#8f8f96"}}
+            for="quantity"
+          >
+            Quantity
+          </label>
+          <input
+            className="form-control" 
+            type="text"
+            id="qte"
+            style={{
+              fontFamily: "'El Messiri', sans-serif",
+              height: "calc(2.5em + 0.75rem + 2px)",
+              borderColor: "#bfb9ce",
+              borderRadius: "2rem",
+              marginBottom: "2%",
+            }}
+            name="qte"
+            value={qte}
+            onChange={(e) => setQte(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label
+            for="exampleFormControlInput1"
+            style={{ fontFamily: "'El Messiri', sans-serif", color: "#8f8f96"}}
+            for="category"
+          >
+            Category
+          </label>
+          <input
+            className="form-control" 
+            type="text"
+            id="category"
+            style={{
+              fontFamily: "'El Messiri', sans-serif",
+              height: "calc(2.5em + 0.75rem + 2px)",
+              borderColor: "#bfb9ce",
+              borderRadius: "2rem",
+              marginBottom: "2%",
+            }}
+            name="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="file"
+            name="image"
+            id="input-files"
+            className="form-control-file custom-file-input"
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </div>
+        <div>
+          <button
+            className="button"
+            type="submit"
+            style={{ marginLeft: "35%", marginTop: "5%" }}
+            onClick={() => addProd()}
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
-    </div>
- 
-   
- 
-        
-      
-
-    )
-}
+  );
+};
 
 export default AddProduct;
