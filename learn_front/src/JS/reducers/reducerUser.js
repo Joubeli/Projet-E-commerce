@@ -8,7 +8,8 @@ import {
     USER_REGISTER,
     USER_REGISTER_FAILED,
     USER_REGISTER_SUCCESS,
-    GET_USER_ALL
+    GET_USER_ALL,
+    GET_USER_SEARCH
   } from "../constants/actionType";
   
   const initialState = {
@@ -16,17 +17,23 @@ import {
     isAuth: false,
     user: {},
     errors:{},
-    users:{},
+    users:{}
   };
   
   const reducerUser = (state = initialState, { type, payload }) => {
     switch (type) {
+      case GET_USER_SEARCH:
+        return {
+          ...state,
+          users: payload,
+        };
       case USER_REGISTER:
       case USER_LOGIN:
       case GET_USER:
         return {
           ...state,
           loading: true,
+          
         };
         case GET_USER_ALL:
         return {

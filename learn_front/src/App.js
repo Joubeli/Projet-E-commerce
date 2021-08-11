@@ -26,15 +26,14 @@ function App() {
 
   const dispatch = useDispatch();
 
-   const getUser = () => {
+  const getUser = () => {
     dispatch(getProfile());
   };
 
-
   useEffect(() => {
     getUser();
-
   }, [isAuth]); 
+
 
 
   
