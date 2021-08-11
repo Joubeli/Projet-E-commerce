@@ -14,8 +14,14 @@ import { getProduct } from '../../JS/action/actionProduct'
 import { getOrder } from '../../JS/action/actionOrder'
 import { useDispatch } from "react-redux"
 import NAVBAR from "./NAVBAR"
+import { useState } from 'react'
 /* import AddProduct from "./AddProduct" */
 import { Button, Form, FormControl } from 'react-bootstrap'
+import {searchUser} from '../../JS/action/actionUser'
+import {searchOrder} from '../../JS/action/actionOrder'
+import {searchProduct} from '../../JS/action/actionProduct'
+import img from "../../img/home.webp"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -34,8 +40,14 @@ const UserProfile = () => {
   const isAuth = useSelector((state) => state.reducerUser.isAuth);
   const user = useSelector((state) => state.reducerUser.user)
   const products = useSelector(state => state.reducerProduct.products)
-  const users = useSelector(state => state.reducerUser.users)
   const orders = useSelector(state => state.reducerOrder.orders)
+  const users = useSelector(state => state.reducerUser.users)
+
+  const [fullName, setfullName]=useState("")
+  const [description, setdescription]=useState("")
+  const [category, setcategory]=useState("")
+  
+
   const classes = useStyles();
 
 
@@ -79,7 +91,18 @@ const UserProfile = () => {
   }, [])
 
 
+  const getselectedUsers = () => {
+    dispatch(searchUser(fullName))
+  }
 
+  const getselectedOrders = () => {
+    dispatch(searchOrder(description))
+  }
+
+  const getselectedProducts = () => {
+    dispatch(searchProduct(category))
+  }
+ 
 
   if (!isAuth) {
     return <Redirect to="/sign-in" />;
@@ -124,34 +147,60 @@ const UserProfile = () => {
 
 
       <NAVBAR />
-      <div id="users" className="users">{users.map((el, i) => (
-        <Users key={i} user={el} />))}
-      </div>
-      <div id="orders">
-        <Orders />
-      </div>
-      <div id="products" className="products">{products.map((el, i) => (<Products key={i} product={el} />))}</div>
-      
-      <Form className="d-flex">
+      <div style={{display:"flex" , justifyContent:"space-around", alignItems:'center'}}>
+      <img className="img" src={img} alt="banner" style={{width:"300px", height:"300px", marginLeft:"270px"}}/>
+
+ {/*  Users */}
+ <div>
+
+      <Form className="d-flex" style={{marginTop:"40px"}}>
         <FormControl
           type="search"
-          placeholder="Search Users"
+          placeholder="Search Users By Name"
           className="mr-2"
           aria-label="Search"
-          style={{width:"200px", marginLeft:"690px"}}
-
+          style={{width:"400px", marginLeft:"80px"}}
+          onChange={(e)=>setfullName(e.target.value)}
+          value={fullName}
         />
-        <Button class="btn btn-warning btn-lg" >Search</Button>
+        <Button class="btn btn-warning btn-lg" onClick={()=>getselectedUsers()}>Search</Button>
+        <Button style={{backgroundColor:"rgb(94,66,166)"}} variant="light">
+              <span style={{color:"white"}} onClick={()=>getAllUsers()}>Refresh</span>
+          </Button> 
       </Form>
-
+      </div>
+     
+</div>
       <div style={{ marginLeft: "310px", marginTop: "50px" }}>
         <h1 class="display-1">List of Users </h1>
         <p class="lead">
           As an Admin y can delete any users that publish inappropriate content on your website
         </p>
       </div>
-      <div id="users" className="users">{users.map((el, i) => (<Users key={i} user={el} />))}</div>
+      <div id="users" className="users">{users.map((el, i) => (<Users key={i} user={el}/>))}</div>
 
+
+
+
+{/* Orders */}
+
+
+
+<Form className="d-flex">
+        <FormControl
+          type="search"
+          placeholder="Search Orders By Name"
+          className="mr-2"
+          aria-label="Search"
+          style={{width:"400px", marginLeft:"300px"}}
+          onChange={(e)=>setdescription(e.target.value)}
+          value={description}
+        />
+        <Button class="btn btn-warning btn-lg" onClick={()=>getselectedOrders()}>Search</Button>
+        <Button style={{backgroundColor:"rgb(94,66,166)"}} variant="light">
+              <span style={{color:"white"}} onClick={()=>getAllOrders()}>Refresh</span>
+          </Button> 
+      </Form>
 
       <div style={{ marginLeft: "310px", marginTop: "50px" }}>
         <h1 class="display-1">List of Orders </h1>
@@ -161,7 +210,31 @@ const UserProfile = () => {
       </div>
 
 
-     <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
+       <div id="orders" className="users">{orders.map((el, i) => (<Orders key={i} order={el} />))}</div>
+
+
+
+
+
+{/* Products */}
+
+
+       <Form className="d-flex" style={{marginTop:"40px"}}>
+        <FormControl
+          type="search"
+          placeholder="Search Products By category"
+          className="mr-2"
+          aria-label="Search"
+          style={{width:"400px", marginLeft:"300px"}}
+          onChange={(e)=>setcategory(e.target.value)}
+          value={category}
+        />
+        <Button class="btn btn-warning btn-lg" onClick={()=>getselectedProducts()}>Search</Button>
+        <Button style={{backgroundColor:"rgb(94,66,166)"}} variant="light">
+              <span style={{color:"white"}} onClick={()=>getAllProducts()}>Refresh</span>
+          </Button> 
+      </Form>
+
 
       <div style={{ marginLeft: "310px", marginTop: "50px" }}>
         <h1 class="display-1">List of Products</h1>

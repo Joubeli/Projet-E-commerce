@@ -1,11 +1,13 @@
 import React from 'react'
 import { Card, Image, Col, Button, Form, FormControl} from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import {deleteUser} from '../../JS/action/actionUser'
+import {deleteUser, searchUser} from '../../JS/action/actionUser'
 
-const Users= ({ user }) => {
+const Users= ({ user , search}) => {
 
   const dispatch= useDispatch()
+
+  
 
   return (
     <>
@@ -18,6 +20,8 @@ const Users= ({ user }) => {
         flexWrap: "warp",
       }}
     >
+
+
       
       <Card
         style={{

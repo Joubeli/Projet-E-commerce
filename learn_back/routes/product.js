@@ -142,4 +142,11 @@ const storage = multer.diskStorage({
         .then(() => res.send("Product has been deleted"))
         .catch(err => res.send(err))
   })
+
+  router.get("/:category", (req, res) => {
+    let { category } = req.params
+    Product.find({ category})
+    .then(search => res.status(200).json(search))
+    .catch(err => res.send(err))
+  })
 module.exports=router
