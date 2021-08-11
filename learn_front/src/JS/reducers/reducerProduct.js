@@ -2,7 +2,7 @@ import {
         ADD_PRODUCT,
         ADD_PRODUCT_SUCCESS,
         ADD_PRODUCT_FAILED,
-        GET_PRODUCT
+        GET_PRODUCT, GET_PRODUCT_SEARCH
     } from '../constants/actionType'
 
 const initialState={
@@ -16,6 +16,11 @@ const initialState={
 const reducerProduct=(state=initialState, {type,payload})=>{
 
 switch(type){
+    case GET_PRODUCT_SEARCH:
+        return {
+          ...state,
+          products: payload,
+        };
     case GET_PRODUCT:
         return {...state, products:payload};
     case ADD_PRODUCT:

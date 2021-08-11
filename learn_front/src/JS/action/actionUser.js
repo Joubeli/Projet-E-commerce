@@ -10,6 +10,7 @@ import {
     USER_REGISTER_FAILED,
     USER_REGISTER_SUCCESS,
     GET_USER_ALL,
+    GET_USER_SEARCH,
   }  from '../constants/actionType'
 
 
@@ -56,7 +57,6 @@ export const registerUser = (newUser) => async (dispatch) => {
       };
   
       const user = await axios.get("/user/currentPage", config);
-  
       dispatch({ type: GET_USER_SUCCESS, payload: user.data });
     } catch (error) {
       dispatch({ type: GET_USER_FAILED, payload: error.response.data });
@@ -74,4 +74,10 @@ export const deleteUser = (id) => (dispatch) => {
     axios.delete(`/user/${id}`)
         .then(() => dispatch(getUsers()))
         .catch(err => console.log(err))
+}
+
+export const searchUser = (fullName) => (dispatch) => {
+  axios.get(`/user/${fullName}`)
+      .then(res => dispatch({ type: GET_USER_SEARCH, payload: res.data }))
+      .catch(err => console.log(err))
 }

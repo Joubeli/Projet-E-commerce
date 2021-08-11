@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import {ADD_ORDER,
     ADD_ORDER_SUCCESS,
-    ADD_ORDER_FAILED, GET_ORDER} from '../constants/actionType'
+    ADD_ORDER_FAILED, GET_ORDER, GET_ORDER_SEARCH} from '../constants/actionType'
 
 
 export const addOrder =(newOrder)=> async(dispatch)=>{
@@ -29,3 +29,15 @@ export const getOrder=()=> (dispatch)=>{
     .catch(err=>console.log(err))
     
 }
+
+export const deleteOrder = (id) => (dispatch) => {
+    axios.delete(`/order/${id}`)
+        .then(() => dispatch(getOrder()))
+        .catch(err => console.log(err))
+}
+
+export const searchOrder = (description) => (dispatch) => {
+    axios.get(`/order/${description}`)
+        .then(res => dispatch({ type: GET_ORDER_SEARCH, payload: res.data }))
+        .catch(err => console.log(err))
+  }
