@@ -23,11 +23,9 @@ export const addProduct =(newProduct)=> async(dispatch)=>{
 };
 
 export const getProduct=()=> (dispatch)=>{
-
     axios.get('/product/display')
     .then(res=> dispatch({type:GET_PRODUCT, payload:res.data}))
-    .catch(err=>console.log(err))
-    
+    .catch(err=>console.log(err))    
 }
 
 export const deleteProduct = (id) => (dispatch) => {

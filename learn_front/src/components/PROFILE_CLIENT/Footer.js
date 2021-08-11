@@ -4,7 +4,7 @@ import "../../../node_modules/font-awesome/css/font-awesome.min.css"
 const Footer = () => {
     return (
         <div className="footer">
-            <hr style={{color:"gray"}} />
+            {/* <hr style={{color:"gray"}} /> */}
             <div className="footer_content">
                 <p className="copyright">
                     <span style={{margin:"0 0.5%"}}>Copyright © 2021 All rights reserved | This template is made with</span>  

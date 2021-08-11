@@ -6,11 +6,9 @@ import {
     } from '../constants/actionType'
 
 const initialState={
-
     product:{},
     errors:{},
-    products:[]
-    
+    products:[]    
 }
 
 const reducerProduct=(state=initialState, {type,payload})=>{

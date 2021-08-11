@@ -3,6 +3,9 @@ import "./Profile.css"
 import { Link } from "react-router-dom"
 import contact from "../../img/contact_background.png.webp"
 import img from "../../img/home.webp"
+import img1 from "../../img/img1.webp"
+import img2 from "../../img/img2.webp"
+import img3 from "../../img/img3.webp"
 
 const Container = () => {
     return (
@@ -18,19 +21,34 @@ const Container = () => {
             </div>
             <div className="latest">
                 <div className="menu">
-                    <h1 className="section_title"> Latest Products</h1>
+                    <h1 className="section_title" style={{marginLeft:"-15%"}}> Latest Products</h1>
                     <ul className="latest_menu">
                         <li style={{color: "#ff003c"}}>All</li>
                         <li>New</li>
                     </ul>
                 </div>
-                    <hr style={{color:"gray"}} />
-
-
+                    <hr style={{color:"gray", marginTop:"-1%"}} />
             </div>
             <div className="best_products">
 
             </div>
+
+            <div className="shop_by_category">
+                <div className="section">
+                    <img src={img1} alt="" width="90%"/>
+                    <div className="deals">
+                        <button className="button">Best New Deals</button>
+                    </div>
+                    
+                </div>
+                <div className="section">
+                    <img src={img2} alt="" width="90%"/>
+                </div>
+                <div className="section">
+                    <img src={img3} alt="" width="90%"/>
+                </div>
+            </div>
+
             <div className="contact">
                 <hr style={{color:"gray"}} />
                 <div className="contact_section" style={{backgroundImage:`Url(${contact})`}}>
