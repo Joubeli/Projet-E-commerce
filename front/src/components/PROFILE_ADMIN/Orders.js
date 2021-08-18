@@ -35,14 +35,15 @@ const Orders = ({ order }) => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-        <Typography style={{fontWeight:'bold', fontSize:'15px'}} ><span >{order.description}</span> </Typography>
+        <Typography style={{fontWeight:'bold', fontSize:'15px', color:'black'}} ><span >{order.date}</span> </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={{fontWeight:'bold'}} >
             <ul>
-          <li><p class="lead">Command contain the following products : {order.product}</p> </li>
-          <li><p class="lead">Command Date is : {order.date}</p></li>
-          <li><p class="lead">Payment will be established : {order.mod_liv}</p></li>
+          <li><p class="lead">The order contain : {order.totalItems} Items</p> </li>
+          <li><p class="lead">The order total price : {order.totalPrice} DT</p></li>
+          <li><p class="lead">Delivery will be established by : {order.mod_liv}</p></li>
+          <li><p class="lead">Payment will be established by : {order.mod_payement}</p></li>
           </ul>
           </Typography>
         </AccordionDetails>

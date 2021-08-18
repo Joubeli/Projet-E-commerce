@@ -9,7 +9,7 @@ const AddOrder = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [date, setDate] = useState("");
   const [mod_liv, setMod_liv] = useState("");
-  const [mod_pay, setMod_pay] = useState("");
+  const [mod_payement, setMod_payement] = useState("");
 
   const dispatch = useDispatch();
 
@@ -31,16 +31,24 @@ const AddOrder = () => {
   }, [cart, totalItems, totalPrice, setTotalItems, setTotalPrice])
 
 
-  const addOrd = (e) => {
+  const addOrd = () => {
     const newOrd = {
       totalItems,
       totalPrice,
       date,
       mod_liv,
-      mod_pay,
+      mod_payement,
     };
 
     dispatch(addOrder(newOrd));
+
+    alert('Your Order is successfully added ! You can choose other product.');
+
+    setTotalItems('')
+    setTotalPrice('')
+    setDate('')
+    setMod_liv('')
+    setMod_payement('')
   };
 
 
@@ -153,7 +161,6 @@ const AddOrder = () => {
             id="mod_liv"
             name="mod_liv"
             rows="2"
-            placeholder="mod_liv"
             onChange={(e) => setMod_liv(e.target.value)}
             required>
                 <option>Express Delivery</option>
@@ -162,7 +169,7 @@ const AddOrder = () => {
             </select>
         </div> <div>
           <label
-          for="mod_pay"          
+          for="mod_payement"          
           style={{ fontFamily: "'El Messiri', sans-serif", color: "#665492" }}
           >
               Payment Mode
@@ -178,18 +185,18 @@ const AddOrder = () => {
               color:"#8f8f96"
             }}
             class="form-control" 
-            id="mod_pay"
-            name="mod_pay"
+            id="mod_payement"
+            name="mod_payement"
             rows="2"
             placeholder=""
-            onChange={(e) => setMod_pay(e.target.value)}
+            onChange={(e) => setMod_payement(e.target.value)}
             required>
                 <option>Cash on Delivery</option>
                 <option>Bank Card</option>
             </select>
         </div>
         <div>
-          <button className="button" style={{marginLeft:"30%", marginTop:"2%", width:"150px"}} type="submit" onClick={() => addOrd()}>
+          <button className="button" style={{marginLeft:"30%", marginTop:"2%", width:"150px"}} type="button" onClick={() => addOrd()}>
             Confirm Order
           </button>
         </div>

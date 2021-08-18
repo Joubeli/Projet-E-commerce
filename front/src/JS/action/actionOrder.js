@@ -36,8 +36,8 @@ export const deleteOrder = (id) => (dispatch) => {
         .catch(err => console.log(err))
 }
 
-export const searchOrder = (description) => (dispatch) => {
-    axios.get(`/order/${description}`)
+export const searchOrder = (date) => (dispatch) => {
+    axios.get(`/order/${date}`)
         .then(res => dispatch({ type: GET_ORDER_SEARCH, payload: res.data }))
         .catch(err => console.log(err))
   }
