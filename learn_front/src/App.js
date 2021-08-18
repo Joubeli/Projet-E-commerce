@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Profile from "./components/PROFILE_CLIENT/Profile"
 import ShoppingCart from "./components/PROFILE_CLIENT/ShoppingCart"
 import Header from './components/PROFILE_CLIENT/Header'
+import AdminLogin from './components/PROFILE_ADMIN/AdminLogin'
 import Footer from './components/PROFILE_CLIENT/Footer'
 import Contact from './components/PROFILE_CLIENT/Contact'
 import Products from './components/PROFILE_CLIENT/Products'
@@ -34,6 +35,8 @@ function App() {
     getUser();
   }, [isAuth]); 
 
+ 
+
 
 
   
@@ -45,7 +48,8 @@ function App() {
             <Route exact path='/' component={LOGIN} />
             <Route path="/sign-in" component={LOGIN} />
             <Route path="/sign-up" component={SIGN_UP} />
-            <Route exact path="/profile" render={() => ( <UserProfile />)} /> 
+            <Route exact path="/admin/profile" render={() => ( <UserProfile />)} />
+            <Route exact path="/admin/login" render={() => ( <AdminLogin />)} />
             <Route  path="/client" render={() => ( <Header />)} /> 
             <Route exact  path="/client" render={() => (<Profile />)} />
             <Route  path="/client" render={() => ( <Footer />)} /> 

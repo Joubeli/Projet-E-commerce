@@ -3,11 +3,12 @@ import "./Profile.css";
 import banner from "../../img/category.jpg";
 import { useSelector } from 'react-redux'
 import CartItem from "./CartItem";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
 
   const cart = useSelector((state) => state.reducerShop.cart)
+
 
   return (
     <div className="cart">
@@ -35,11 +36,11 @@ const ShoppingCart = () => {
               <CartItem  key = {item.id} item = {item} />
             })}
         </div>
-        <div className="shopping-cart-bottom">            
+         <div className="shopping-cart-bottom">             
           <span className="total">Order's Total : </span>
-      <Link to="/client/ADD-Order"><button className="button order-button">Order</button></Link>
-
-        </div>
+          <Link  to="/client/ADD-Order"><button className="button order-button">Order</button></Link>
+  
+        </div> 
       </div>
     </div>
   );

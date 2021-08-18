@@ -28,7 +28,10 @@ const LOGIN = () => {
 
         dispatch(userLogin(loginCred));
     };
-    return  isAuth?  <Redirect to="./Profile" /> : loading ? (
+
+
+   
+    return  isAuth?  <Redirect to="./client" /> : loading ? (
         <div className='wait'>
         <h3>Please Wait </h3>
         <div className="loader">  
@@ -42,23 +45,23 @@ const LOGIN = () => {
             <div className='box_login'>
                 <form>
                     <h3>Log in</h3>
-                    <div className="form-group">
+                    <div className="form-group" style={{marginTop:"35px"}}>
                         <label>Email</label>
                         <input type="email" className="form-control" onChange={ (e)=> setEmail(e.target.value)} placeholder="Enter email" />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{marginTop:"35px"}}>
                         <label>Password</label>
                         <input type="password" className="form-control" onChange={(e)=>setPassword(e.target.value)} placeholder="Enter password" />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group" style={{marginTop:"35px"}}>
                         <div className="custom-control custom-checkbox">
                             <input type="checkbox" className="custom-control-input" id="customCheck1" />
                             <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
                         </div>
                     </div>
-
-                    <button type="submit" className="btn btn-info btn-block" onClick={()=>login()}>Sign in</button>
+                    <button type="submit" style={{backgroundColor:"#645FE5", width:"500px", padding:"10px 10px 10px 10px" , marginTop:"45px", borderRadius:"25px" }} onClick={() => login()}><span style={{color:'white' , fontWeight:"bold", fontSize:"20px"}}>Sign in</span></button>
+                      
                     <p className="forgot-password text-right">
                         Forgot <a href="#">password?</a>
                     </p>

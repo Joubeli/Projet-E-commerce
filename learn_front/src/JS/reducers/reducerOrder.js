@@ -5,7 +5,7 @@ const initialState={
 
   
     errors:{},
-    orders:{},
+    orders:[],
     order:{}
     
 }

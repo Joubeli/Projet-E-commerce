@@ -21,7 +21,9 @@ import {searchUser} from '../../JS/action/actionUser'
 import {searchOrder} from '../../JS/action/actionOrder'
 import {searchProduct} from '../../JS/action/actionProduct'
 import img from "../../img/home.webp"
+import admin2 from "../../img/admin2.png"
 
+import { getProfileAdmin } from "../../JS/action/actionAdmin"
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -35,10 +37,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
 const UserProfile = () => {
 
   const isAuth = useSelector((state) => state.reducerUser.isAuth);
-  const user = useSelector((state) => state.reducerUser.user)
+  /* const user = useSelector((state) => state.reducerUser.user) */
   const products = useSelector(state => state.reducerProduct.products)
   const orders = useSelector(state => state.reducerOrder.orders)
   const users = useSelector(state => state.reducerUser.users)
@@ -59,6 +64,15 @@ const UserProfile = () => {
   };
 
   const dispatch = useDispatch()
+
+  const getAdmin = () => {
+    dispatch(getProfileAdmin());
+  };
+  
+  useEffect(() => {
+    getAdmin();
+  }, [isAuth]);
+  
 
   //Users
   const getAllUsers = () => {
@@ -104,10 +118,7 @@ const UserProfile = () => {
   }
  
 
-  if (!isAuth) {
-    return <Redirect to="/sign-in" />;
-  }
-
+  
   return (
     <div>
       <div className='account'>
@@ -115,7 +126,7 @@ const UserProfile = () => {
           <div className='navbar_Admin'>
             <a href="#">
               <div className={classes.root}>
-                <Avatar style={{ marginLeft: "35%", marginTop: "35%" }} alt="Remy Sharp" src="./admin2.png" className={classes.large} />
+                <Avatar style={{ marginLeft: "35%", marginTop: "35%" }} alt="Remy Sharp" src={admin2} className={classes.large} />
               </div>
               <div style={{
                 display: "flex",
@@ -123,12 +134,10 @@ const UserProfile = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 marginLeft: "15px"
-
-
               }}>
                 <p class="lead" style={{ color: "white" }}> Administrator</p>
-                <p class="lead" style={{ color: "white" }}> {user.fullName}</p>
-                <p class="lead" style={{ color: "white" }}> {user.email}</p>
+             <p class="lead" style={{ color: "white" }}> Admin@gmail.com</p>
+                <p class="lead" style={{ color: "white" }}> Admin 1 : Imen</p>
               </div>
 
             </a>

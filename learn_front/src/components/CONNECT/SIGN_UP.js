@@ -40,21 +40,21 @@ const SIGN_UP = () => {
         <div className='box_login'>
            <form>
                 <h3>Register</h3>
-                <div className="form-group">
+                <div className="form-group" style={{marginTop:"35px"}}>
                     <label>First name</label>
                     <input type="text" className="form-control"  onChange={(e) => setFullName(e.target.value)} placeholder="First name" required/>
                 </div>
-                <div className="form-group">
+                <div className="form-group" style={{marginTop:"35px"}}>
                     <label>Email</label>
                     <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required/>
                 </div>
-                <div className="form-group">
+                <div className="form-group" style={{marginTop:"35px"}}>
                     <label>Password</label>
                     <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} placeceholder="Enter password" required />
                 </div>
 
-                <button type="submit" className="btn btn-info btn-block" onClick= {()=>register()}>Register</button>
-                <p className="forgot-password text-right">
+                <button type="submit" style={{backgroundColor:"#645FE5", width:"500px", padding:"10px 10px 10px 10px" , marginTop:"45px", borderRadius:"25px" }} onClick={() => register()}><span style={{color:'white' , fontWeight:"bold", fontSize:"20px"}}>Sign in</span></button>
+                       <p className="forgot-password text-right">
                     Already registered 
                     <Link to={"/sign-in"}>log in?</Link>
                 </p>

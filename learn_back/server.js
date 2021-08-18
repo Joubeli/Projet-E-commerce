@@ -6,7 +6,8 @@ const app= express()
 
 app.use('/files', express.static('files'));
 app.use(express.json())
-
+//admin Router
+app.use("/admin", require("./routes/admin"))
 // user Router
 app.use("/user", require("./routes/user_login"))
 //Product Router

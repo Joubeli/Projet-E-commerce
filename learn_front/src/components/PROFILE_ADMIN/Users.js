@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Image, Col, Button, Form, FormControl} from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import {deleteUser, searchUser} from '../../JS/action/actionUser'
+import profile from "../../img/profile.png"
 
 const Users= ({ user , search}) => {
 
@@ -47,7 +48,7 @@ const Users= ({ user , search}) => {
          
         <Col>
           <Image
-          src="./profile.png"
+          src={profile}
          
             style={{
               height: "100px",

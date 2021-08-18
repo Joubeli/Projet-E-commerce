@@ -5,9 +5,9 @@ const bcrypt= require('bcrypt')
 const jwt = require("jsonwebtoken");
 
 const { registerRules, validator } = require("../middlewares/validator");
-
-const passport = require("passport-jwt");
 const isAuth = require("../middlewares/passport-setup");
+const passport = require("passport-jwt");
+
 
 
 //Register User 

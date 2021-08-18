@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   products: [],
-  cart: [],
+  cart: []
 };
 
 const reducerShop = (state = initialState, { type, payload }) => {

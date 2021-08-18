@@ -34,3 +34,13 @@ export const GET_ORDER_SEARCH = "GET_ORDER_SEARCH";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const ADJUST_QTY = "ADJUST_QTY";
+
+
+//Admin
+export const ADMIN_LOGIN = "ADMIN_LOGIN";
+export const ADMIN_LOGIN_SUCCESS = "ADMIN_LOGIN_SUCCESS";
+export const ADMIN_LOGIN_FAILED = "ADMIN_LOGIN_FAILED";
+
+export const GET_ADMIN = "GET_ADMIN";
+export const GET_ADMIN_SUCCESS = "GET_ADMIN_SUCCESS";
+export const GET_ADMIN_FAILED = "GET_ADMIN_FAILED";
